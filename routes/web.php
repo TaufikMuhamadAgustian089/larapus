@@ -18,4 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::resource('nama', 'MiddleController@index');
+Route::resource('/middle', 'middleController@index');
+
+Route::group(['middleware'=> 'web'], function(){	
+	Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']],function(){
+	Route::resource('authors','AuthorsController');
+
+});
+});

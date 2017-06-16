@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/jquery.dataTables.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dataTables.bootstrap.css" rel="stylesheet">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,9 +49,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
-                        @if (Auth::check())
-                        <li> <a href="{{ url('/home') }}">Dashboard</a></li>
+                        @if(Auth::check())
+                            <li><a href="{{url('/home')}}">Dashboard</a></li>
                         @endif
+
+                        @role('admin')
+                            <li><a href="{{route('authors.index')}}">Penulis</a></li>
+                            @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,11 +90,15 @@
             </div>
         </nav>
 
+        @include('layouts._flash')
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap.min.js"></script>
+        @yield('scripts')
     @include('layouts.menu')
 </body>
 </html>

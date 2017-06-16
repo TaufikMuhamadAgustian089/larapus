@@ -4,19 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class MiddleController extends Controller
+class middleController extends Controller
 {
     //
-
-	public function __construct()
+	public function__construct()
 	{
 		$this->middleware('auth');
-		
-	}
 
-    public function index()
+	}
+    public function index ()
     {
-    	$a= "Taufik";
-    	return "Nama Saya Adalah: " .$a;
+    	$a="SMK Assalaam";
+    	return "Nama Sekolah Saya :".$a;
     }
 }
