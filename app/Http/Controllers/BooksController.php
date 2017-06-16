@@ -21,7 +21,7 @@ class BooksController extends Controller
             $books = Book::with('author');
             return Datatables::of($books)
             ->addColumn('action',function($book){
-                return view('datatable.-action',[
+                return view('datatable._action',[
                     'model'         => $book,
                     'form_url'      => route('books.destroy', $book->id),
                     'edit_url'      => route('books.edit',$book->id),
