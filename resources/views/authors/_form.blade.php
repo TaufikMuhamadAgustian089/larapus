@@ -12,4 +12,4 @@
 		{!! Form::submit('Simpan',['class'=>'btn btn-primary'])!!}
 	</div>
 </div>
-                    
+        
